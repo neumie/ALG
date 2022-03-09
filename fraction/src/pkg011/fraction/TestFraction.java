@@ -15,6 +15,7 @@ public class TestFraction {
         System.out.println(second.getCitatel() +"/" + second.getJmenovatel());
         System.out.println(first.toDouble());
         System.out.println(first.toString());
+        System.out.println(second.toString());
     }
     
 }
