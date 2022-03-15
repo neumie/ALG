@@ -6,18 +6,15 @@ public class Bus
     private int seats;
     private int passengers;
     private int link;
-    private int stop;
 
     public Bus(){
         this.seats = 40;
-        this.stop = 0;
     }
 
     public Bus(String name, int seats, int link){
         this.name = name;
         this.seats = seats;
         this.link = link;
-        this.stop = 0;
     }
 
     public String GetName(){
@@ -40,10 +37,6 @@ public class Bus
         return this.seats - this.passengers;
     }
 
-    public int getStop(){
-        return this.stop;
-    }
-
     public void change(int link, String name){
         this.link = link;
         this.name = name;
@@ -60,14 +53,9 @@ public class Bus
 
     public void enter(int passengers){
         this.passengers += passengers;
-        this.stop++;
     }
 
     public void exit(){
         this.passengers = 0;
-    }
-
-    public void resetStop(){
-        this.stop = 0;
     }
 }

@@ -13,16 +13,14 @@ public class BusApp
         int pocet_zastavek = 5;
 
         for (int zastavka = 1; zastavka <= pocet_zastavek; zastavka++){
-            sendInfo(university);
+            System.out.println("Zastávka " +zastavka);
+            System.out.println(university.toString());
             ask(university);
+            System.out.println(university.toString() +"\n");
         }
         university.exit();
+        System.out.println(university.toString());
 
-    }
-
-    private static void sendInfo(Bus autobus){
-        System.out.println("Zastávka " +autobus.getStop());
-        System.out.println(autobus.toString());
     }
 
     private static void ask(Bus autobus){
@@ -30,18 +28,25 @@ public class BusApp
         int vyst = sc.nextInt();
         int nast = sc.nextInt();
 
-        if (vyst > autobus.getPassengers() && vyst != 0){
+        leave(autobus, vyst);
+        enter(autobus, nast);
+    }
+
+    private static void leave(Bus autobus, int leavingPassengers){
+        if (leavingPassengers > autobus.getPassengers() && leavingPassengers != 0){
             System.out.format("Vystoupilo %d pasažerů\n", autobus.getPassengers());
             autobus.exit();
         } else {
-            autobus.leave(vyst);
+            autobus.leave(leavingPassengers);
         }
+    }
 
-        if (nast > autobus.getFreeSeats()){
+    private static void enter(Bus autobus, int enteringPassengers){
+        if (enteringPassengers > autobus.getFreeSeats()){
             System.out.format("Nastoupilo %d pasažerů\n", autobus.getFreeSeats());
             autobus.enter(autobus.getFreeSeats());
         } else {
-            autobus.enter(nast);
+            autobus.enter(enteringPassengers);
         }
     }
 }
