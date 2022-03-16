@@ -1,4 +1,4 @@
-package polynom;
+package pkg.polynom;
 
 import static org.junit.Assert.assertTrue;
 
