@@ -40,6 +40,12 @@ public class Polynom
         return new Polynom(reversed);
     }
 
+    public int[] getPolynom(){
+        int[] returns = new int[this.coefficient.length];
+        System.arraycopy(this.coefficient, 0, returns, 0, this.coefficient.length);
+        return returns;
+    }
+
     public int getExponent(){
         return this.coefficient.length;
     }
@@ -54,6 +60,19 @@ public class Polynom
             value += this.coefficient[i] * Math.pow(x, i);
         }
         return value;
+    }
+
+    public Polynom getDerivation(){
+        int[] derivation = new int[this.coefficient.length];
+        int[] endDerivation = new int[this.coefficient.length-1];
+        for(int i = derivation.length-1; i >= 0; i--){
+            derivation[i] = this.coefficient[i] * i;
+        }
+        for(int i = 0; i < derivation.length-1; i++){
+            derivation[i] = derivation[i+1];
+        }
+        System.arraycopy(derivation, 0, endDerivation, 0, endDerivation.length);
+        return Polynom.getInstanceFrom(endDerivation);
     }
 
     public String toString(){

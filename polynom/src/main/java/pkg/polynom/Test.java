@@ -7,6 +7,6 @@ public class Test {
 
         System.out.println(jedna.getValue(2));
         System.out.println(jedna.toString());
-
+        System.out.println(jedna.getDerivation().toString());
     }
 }
