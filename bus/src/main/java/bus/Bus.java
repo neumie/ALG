@@ -2,23 +2,27 @@ package bus;
 
 public class Bus
 {
-    private String name;
-    private int seats;
+    private String company;
+    private final int seats;
     private int passengers;
     private int link;
 
     public Bus(){
         this.seats = 40;
+        this.company = "";
+        this.link = 0;
+        this.passengers = 0;
     }
 
-    public Bus(String name, int seats, int link){
-        this.name = name;
+    public Bus(String company, int seats, int link){
+        this.company = company;
         this.seats = seats;
         this.link = link;
+        this.passengers = 0;
     }
 
-    public String GetName(){
-        return this.name;
+    public String getCompany(){
+        return this.company;
     }
 
     public int getSeats(){
@@ -37,22 +41,26 @@ public class Bus
         return this.seats - this.passengers;
     }
 
-    public void change(int link, String name){
+    public void setCompanyLink(int link, String company){
         this.link = link;
-        this.name = name;
+        this.company = company;
     }
 
     @Override
     public String toString(){
-        return String.format("Autobus číslo %d společnosti %s s počtem sedadel %d veze %d cestujících", this.link, this.name, this.seats, this.passengers);
+        return String.format("Autobus číslo %d společnosti %s s počtem sedadel %d veze %d cestujících", this.link, this.company, this.seats, this.passengers);
     }
 
     public void leave(int passengers){
-        this.passengers -= passengers;
+        if (passengers > this.passengers){
+            this.passengers = 0;
+        } else this.passengers -= passengers;
     }
 
     public void enter(int passengers){
-        this.passengers += passengers;
+        if (passengers + this.passengers > this.seats){
+            this.passengers = this.seats;
+        } else this.passengers += passengers;
     }
 
     public void exit(){
