@@ -21,6 +21,11 @@ public class Polynom
         System.arraycopy(coefficient, 0, this.coefficient, 0, coefficient.length);
     }
 
+    public Polynom(int... coefficient){
+        this.coefficient = new int[coefficient.length];
+        System.arraycopy(coefficient, 0, this.coefficient, 0, coefficient.length);
+    }
+
     //Správně otočený array z více intů
     public static Polynom getInstanceFrom(int... a){
         return new Polynom(a);
