@@ -54,12 +54,12 @@ public class Polynom
         return this.coefficient[Exponent];
     }
 
-    public int getValue(int x){
-        int value = 0;
-        for(int i = 0; i < this.coefficient.length; i++){
-            value += this.coefficient[i] * Math.pow(x, i);
+    public int getValue(int x) {
+        int result = this.getCoefficient(this.coefficient.length-1);
+        for (int i = this.coefficient.length-2; i >= 0; i--) {
+            result = result * x + this.getCoefficient(i);
         }
-        return value;
+        return result;
     }
 
     public Polynom getDerivation(){
